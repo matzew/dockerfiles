@@ -1,5 +1,5 @@
 # Use latest aerogear/wildfly image as the base
-FROM aerogear/wildfly
+FROM aerogear/mysql-wildfly
 MAINTAINER Bruno Oliveira <bruno@aerogear.org>
 
 # Run everything below as aerogear user

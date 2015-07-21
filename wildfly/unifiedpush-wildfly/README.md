@@ -16,7 +16,7 @@ Follow the [instructions](http://docs.docker.com/installation/)
 
 Clone the repo and build yourself:
 
-`docker build -t aerogear/unifiedpush-wildfly .`
+`docker build -t aerogear/unifiedpush-mysql-wildfly .`
 
 ## Accessing it
 
