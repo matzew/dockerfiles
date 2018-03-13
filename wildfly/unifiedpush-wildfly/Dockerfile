@@ -4,10 +4,10 @@ MAINTAINER Matthias Wessendorf <matzew@apache.org>
 
 
 # Download Aerogear distribution
-ENV UPSVER=1.2.4.Final
+ENV UPSVER=1.2.5-SNAPSHOT
 ENV UPSDIST=/opt/aerogear-unifiedpush-server-$UPSVER
 
-RUN curl -L -o /opt/aerogear-unifiedpush-server-$UPSVER-dist.tar.gz https://github.com/aerogear/aerogear-unifiedpush-server/releases/download/$UPSVER/aerogear-unifiedpush-server-$UPSVER-dist.tar.gz
+RUN curl -L -o /opt/aerogear-unifiedpush-server-$UPSVER-dist.tar.gz https://github.com/matzew/aerogear-unifiedpush-server/releases/download/ups-pure-0.1/aerogear-unifiedpush-server-$UPSVER-dist.tar.gz
 WORKDIR /opt
 RUN tar zxf aerogear-unifiedpush-server-$UPSVER-dist.tar.gz
 
