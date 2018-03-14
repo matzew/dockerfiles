@@ -2,9 +2,9 @@
 
 set -e
 # run migrator
-echo "Starting Liquibase migration"
-cd $UPSDIST/migrator/ups-migrator
-./bin/ups-migrator --url=jdbc:mysql://${MYSQL_SERVICE_HOST}:${MYSQL_SERVICE_PORT}/${MYSQL_DATABASE} --driver=com.mysql.jdbc.Driver --username=${MYSQL_USER} --password=${MYSQL_PASSWORD} --changeLogFile=liquibase/master.xml update
+# echo "Starting Liquibase migration"
+# cd $UPSDIST/migrator/ups-migrator
+# ./bin/ups-migrator --url=jdbc:mysql://${MYSQL_SERVICE_HOST}:${MYSQL_SERVICE_PORT}/${MYSQL_DATABASE} --driver=com.mysql.jdbc.Driver --username=${MYSQL_USER} --password=${MYSQL_PASSWORD} --changeLogFile=liquibase/master.xml update
 
 # replace eventual private certificate
 if [ -d /keys ];then
@@ -21,5 +21,5 @@ fi
 
 # launch wildfly
 echo "launching wildfly"
-exec /opt/jboss/wildfly/bin/standalone.sh -Dups.realm.name=aerogear -Dups.auth.server.url=http://${KEYCLOAK_SERVICE_HOST}:${KEYCLOAK_SERVICE_PORT}/auth -b 0.0.0.0 $@
+exec /opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 $@
 
