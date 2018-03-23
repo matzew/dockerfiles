@@ -3,12 +3,12 @@ FROM aerogear/wildfly
 MAINTAINER Matthias Wessendorf <matzew@apache.org>
 
 # Download Aerogear distribution
-ENV UPS_VER=1.3.0-no-auth-SNAPSHOT
-ENV UPSDIST=/opt/aerogear-unifiedpush-server-$UPS_VER
+ENV UPSVERSION=1.3.0-no-auth-SNAPSHOT
+ENV UPSDIST=/opt/aerogear-unifiedpush-server-$UPSVERSION
 
-RUN curl -L -o /opt/aerogear-unifiedpush-server-$UPS_VER-dist.tar.gz https://github.com/aerogear/aerogear-unifiedpush-server/releases/download/1.3.0-no-auth/aerogear-unifiedpush-server-1.3.0-no-auth-SNAPSHOT-dist.tar.gz
+RUN curl -L -o /opt/aerogear-unifiedpush-server-$UPSVERSION-dist.tar.gz https://github.com/aerogear/aerogear-unifiedpush-server/releases/download/1.3.0-no-auth/aerogear-unifiedpush-server-1.3.0-no-auth-SNAPSHOT-dist.tar.gz
 WORKDIR /opt
-RUN tar zxf aerogear-unifiedpush-server-$UPS_VER-dist.tar.gz
+RUN tar zxf aerogear-unifiedpush-server-$UPSVERSION-dist.tar.gz
 
 # unzip migrator and copy liquibase.properties
 WORKDIR $UPSDIST/migrator
