@@ -2,11 +2,18 @@
 FROM aerogear/wildfly 
 MAINTAINER Matthias Wessendorf <matzew@apache.org>
 
-# Download Aerogear distribution
-ENV UPS_RELEASE_VERSION=1.3.0-no-auth-SNAPSHOT
+# Define prefix and suffix individually because they are concatenated
+# in different ways in the Github URL
+ENV UPS_RELEASE_PREFIX 1.3.0
+ENV UPS_RELEASE_SUFFIX no-auth.Final
+ENV UPS_RELEASE_VERSION=$UPS_RELEASE_PREFIX-$UPS_RELEASE_SUFFIX
 ENV UPSDIST=/opt/aerogear-unifiedpush-server-$UPS_RELEASE_VERSION
 
-RUN curl -L -o /opt/aerogear-unifiedpush-server-$UPS_RELEASE_VERSION-dist.tar.gz https://github.com/aerogear/aerogear-unifiedpush-server/releases/download/$UPS_RELEASE_VERSION/aerogear-unifiedpush-server-1.3.0-no-auth-SNAPSHOT-dist.tar.gz
+# Force docker to download the file instead of relying on the cache
+ARG CACHEBUST=1
+
+RUN curl -L -o /opt/aerogear-unifiedpush-server-$UPS_RELEASE_VERSION-dist.tar.gz https://github.com/aerogear/aerogear-unifiedpush-server/releases/download/$UPS_RELEASE_PREFIX.$UPS_RELEASE_SUFFIX/aerogear-unifiedpush-server-$UPS_RELEASE_VERSION-dist.tar.gz
+
 WORKDIR /opt
 RUN tar zxf aerogear-unifiedpush-server-$UPS_RELEASE_VERSION-dist.tar.gz
 
